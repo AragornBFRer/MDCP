@@ -1,24 +1,3 @@
-"""Paper-ready plots for covariate shift experiments (delta_x sweep).
-
-This script consumes covariate-shift evaluation artifacts produced by
-`notebook/eval_cov_shift.py` (expects an `eval-root` that contains a
-`summaries/` subfolder).
-
-It generates two sets of figures:
-
-- Vanilla figures (exclude tuned MDCP)
-- Tuned figures (include mimic-selected MDCP)
-
-Outputs are stored beneath `eval_out/final_paper_ready/cov_shift/` by
-default.
-
-MDCP tuning logic (important):
-For each trial and delta_x, we select the MDCP penalty (gamma) by
-optimizing mimic-test performance (coverage constraint, then efficiency),
-then plot the corresponding true-test metrics. This matches
-`archive/mimic_calibtest_logic.md`.
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -83,7 +62,6 @@ EFF_KEY = {CLASSIFICATION: "avg_set_size", REGRESSION: "avg_width"}
 # Paper plotting requirement: do not plot beyond this x-value.
 MAX_DELTA_X = 4.5
 
-# Method labels required by AGENTS.md
 METHOD_BASELINE_AGG = "Baseline agg"
 METHOD_BASELINE_SRC_PREFIX = "Baseline src "
 METHOD_MDCP = "MDCP"

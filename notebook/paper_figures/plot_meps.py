@@ -1,16 +1,3 @@
-"""Paper-ready MEPS MDCP comparison plots.
-
-This script reconstructs MDCP and baseline metrics from the raw MEPS
-evaluation payloads and renders concise bar+dot plots that are ready for
-statistics-style publications. The workflow follows the repository's
-MDCP mimic calibration logic: for each trial we select the penalty
-parameter that performs best on the mimic test split (subject to the
-coverage target) and evaluate that choice on the true test set. Both
-non-penalized MDCP and mimic-selected MDCP are compared against the
-single-source baselines (shown individually) and the max-aggregated
-baseline. Outputs are saved under ``eval_out/final_paper_ready``.
-"""
-
 from __future__ import annotations
 
 import argparse

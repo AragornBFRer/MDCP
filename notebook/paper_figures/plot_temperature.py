@@ -1,10 +1,3 @@
-"""Paper-ready plots for MDCP temperature alteration experiments.
-
-This script reproduces the temperature sweep visualizations using the
-publication guidelines in ``AGENTS.md``. It focuses on the comparison
-between baseline aggregation strategies and the MDCP method under two
-setups: vanilla non-penalized MDCP and mimic-selected penalized MDCP.
-"""
 from __future__ import annotations
 
 import argparse

@@ -12,9 +12,6 @@ Training objective
 ------------------
 We optimize a weighted sum of negative log-likelihood losses:
     pooled_loss_weight * NLL(pooled_head) + source_loss_weight * NLL(domain_head)
-
-This aligns with the project-wide "predict once, split many" evaluation design:
-evaluation can later load head-only weights + cached embeddings on CPU.
 """
 from __future__ import annotations
 

@@ -1,10 +1,6 @@
 """
 Individual Nonlinear Term Evaluation Script
 
-This script systematically tests each nonlinear term individually (no combinations)
-for both classification and regression tasks. Results are saved in eval_out/nonlinear/
-following the same format as evaluation_compact_rand_avg.py.
-
 Classification terms tested individually:
 - interaction, sinusoid, softplus
 

@@ -1,21 +1,3 @@
-"""Covariate-shift simulation suite (linear-only).
-
-This module implements the simulation DGP described in `AGENTS_CovariateShift.md`.
-
-Key properties:
-- K=3 sources with shared covariance Sigma (equicorrelated, off-diagonal=0.2).
-- Informative coordinates I of size 4 sampled uniformly at random per call.
-- Covariate shift via mean shifts supported only on I:
-    mu_1 = 0, mu_2 = +delta_x * v, mu_3 = -delta_x * v,
-  where v is a random unit vector supported on I.
-- Two settings:
-    * x_shift_only: P(Y|X) shared across sources.
-    * x_and_y_shift: concept shift as in the existing linear DGP, with fixed tau=2.5.
-- Linear-only: no nonlinear terms.
-
-Important: Standardization is disabled by default to preserve mean shifts.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass

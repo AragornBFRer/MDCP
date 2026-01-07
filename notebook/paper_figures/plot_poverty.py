@@ -1,13 +1,3 @@
-"""Generate publication-ready PovertyMap MDCP subset plots.
-
-The script loads the aggregated MDCP evaluation tables produced for the
-PovertyMap dataset (``eval_out/poverty*/mdcp_analysis``), renames methods
-for concise paper-ready presentation, and renders combined coverage/width
-comparisons with per-source panels. Coverage values below 0.65 are shown
-inside a compressed band so no data is truncated while keeping the
-visual focus on the high-coverage regime. Outputs are stored in
-``eval_out/final_paper_ready``.
-"""
 from __future__ import annotations
 
 import argparse

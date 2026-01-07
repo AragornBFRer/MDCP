@@ -1,17 +1,3 @@
-"""Generate publication-ready MDCP FMoW plots.
-
-This script loads the aggregated evaluation tables under
-``eval_out/fmow*/mdcp_analysis`` and produces combined coverage/set-size
-figures comparable to the poverty results. It outputs:
-
-- subset-level coverage + set-size panels (nonpenalized MDCP only)
-- subset-level coverage + set-size panels (including mimic-selected MDCP)
-- aggregate coverage / worst-case coverage / set-size panels (nonpenalized)
-- aggregate coverage / worst-case coverage / set-size panels (including
-  mimic-selected MDCP)
-
-All figures are saved to ``eval_out/final_paper_ready``.
-"""
 from __future__ import annotations
 
 import argparse

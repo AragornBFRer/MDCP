@@ -2,9 +2,6 @@ from pathlib import Path
 from typing import Union
 
 RANDOM_SEED = 3
-# 1,2,3,... for new version test (major updates)
-# 8 for standard evaluations (for publication)
-# 19 for quick dirty trials
 
 TRUE_TRAIN_RATIO = 0.375
 TRUE_CAL_RATIO = 0.125

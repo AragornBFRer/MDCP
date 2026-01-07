@@ -1,17 +1,3 @@
-"""Paper-ready nonlinear MDCP evaluation plots.
-
-For every nonlinear configuration (interaction, linear, sinusoid,
-softplus, etc.) and task (classification / regression), this script
-generates paired figures comparing baseline methods against:
-
-* Non-penalized MDCP (gamma=0).
-* Mimic-selected penalized MDCP evaluated on the true test set.
-
-Outputs are stored beneath ``eval_out/final_paper_ready/nonlinear`` with
-per-setting PDFs and summaries. A compact ``summary`` subdirectory
-collects aggregated overview figures and tables spanning all
-configurations.
-"""
 from __future__ import annotations
 
 import argparse

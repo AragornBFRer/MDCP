@@ -1,17 +1,3 @@
-"""Generate publication-ready plots for the MDCP linear evaluation.
-
-This script focuses on two visual comparisons using the evaluation
-artifacts stored under ``eval_out/linear``:
-
-1. Baselines vs. non-penalized MDCP.
-2. Baselines vs. non-penalized MDCP vs. trial-wise penalized MDCP where
-    the penalty is chosen using mimic test metrics and then evaluated on
-    the true test set.
-
-The resulting figures follow the specifications outlined in ``AGENTS.md``
-by using bar + dot plots, omitting titles, and emitting PDF files under
-``eval_out/final_paper_ready``.
-"""
 from __future__ import annotations
 
 import argparse

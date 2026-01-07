@@ -152,9 +152,6 @@ def _infer_region_lookup(meta: Dict[str, object]) -> Dict[int, str]:
     Region *names* must be inferred using a WILDS-provided id->name mapping when
     available. Recent prediction artifacts store this mapping under:
       meta['embeddings_meta']['region_id_to_name']  (list[str], indexed by raw region id)
-
-    When the mapping is missing (legacy artifacts), we fall back to a best-effort
-    guess that assumes raw ids 0..5 match REGION_ORDER.
     """
     # Preferred path: use exported WILDS mapping from prediction artifacts.
     region_id_to_name = None
@@ -181,7 +178,6 @@ def _infer_region_lookup(meta: Dict[str, object]) -> Dict[int, str]:
         if region_id_to_name is not None and 0 <= raw_int < len(region_id_to_name):
             lookup[int(contig_idx)] = region_id_to_name[raw_int]
         elif 0 <= raw_int < len(REGION_ORDER):
-            # Legacy fallback: only correct if raw ids were 0..5 in REGION_ORDER.
             lookup[int(contig_idx)] = REGION_ORDER[raw_int]
         elif raw_int >= 0:
             lookup[int(contig_idx)] = f"Region_{raw_int}"
