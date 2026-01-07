@@ -1,15 +1,17 @@
-# MDCP
+<h1 align="center">
+<p> MDCP
+</h1>
 
-This repo serves as the implementation for the paper ["Multi-Distribution Robust Conformal Prediction"](https://ying531.github.io/assets/files/MDCP_paper.pdf).
+This repo serves as the implementation for the paper ["Multi-Distribution Robust Conformal Prediction"](https://arxiv.org/abs/2601.02998).
 
 ![Visual Overview](assets/visual.png)
 
 > **Table of Contents**
 > - [Installation](#installation)
-> - [Simulation Experiments](#simulation-experiments)
-> - [Real-data Applications](#real-data-applications)
+> - [Simulation experiments](#simulation-experiments)
+> - [Real-data applications](#real-data-applications)
 > - [Figures](#figures)
-> - [Codebase Overview](#codebase-overview)
+> - [Repo layout](#repo-layout)
 
 
 ## Installation
@@ -36,54 +38,37 @@ pip install --upgrade pip
 pip install -r requirements.txt wilds
 ```
 
----
 
-## Simulation Experiments
+## Simulation experiments
 
 All simulation scripts live under `notebook/` and write artifacts to `eval_out/` (see `model/const.py` for exact folders). The paper reports averages over 100 independent runs per configuration over contiguous seed ranges starting from the base seed.
 
-### Linear Model
-Run the linear simulation:
+Use the following commands to run the simulations under different suites. Each writes its outputs to `eval_out/<suite_name>/`.
+
 ```bash
+# Linear suite
 python notebook/eval_linear.py --num-trials 1 --base-seed 34567
-```
-> Outputs will be saved under `eval_out/linear/`, including both classification and regression results.
 
-### Nonlinear Model
-Run the nonlinear simulation:
-```bash
+# Nonlinear suite
 python notebook/eval_nonlinear.py --num-trials 1 --base-seed 23456
-```
-> Outputs will be saved under `eval_out/nonlinear/`.
 
-### Temperature Scaling
-Run the temperature scaling experiment:
-```bash
+# Temperature suite
 python notebook/eval_temperature.py --num-trials 1 --base-seed 12345 --temperatures 0.5 1.5 2.5 3.5 4.5
-```
-> Outputs will be saved under `eval_out/temperature/`.
 
-### Covariate Shift
-Run the covariate shift (delta_x sweep) simulation:
-```bash
+# Covariate shift suite
 python notebook/eval_cov_shift.py --num-trials 1 --base-seed 34567 --delta-xs 0 0.5 1.5 2.5 3.5 4.5
-```
-> Outputs will be saved under `eval_out/cov_shift/`.
 
-### Covariate + Concept Shift
-Run the covariate + concept shift (delta_x sweep) simulation:
-```bash
+# Covariate & concept shift suite
 python notebook/eval_cov_and_concept_shift.py --num-trials 1 --base-seed 45678 --delta-xs 0 0.5 1.5 2.5 3.5 4.5
 ```
-> Outputs will be saved under `eval_out/cov_and_concept_shift/`.
 
 
 
-## Real-data Applications
+## Real-data applications
 
 Three real-world data evaluations are supported: [FMoW](https://wilds.stanford.edu/datasets/#fmow), [PovertyMap](https://wilds.stanford.edu/datasets/#povertymap) from [WILDS](https://github.com/p-lambda/wilds), and [MEPS](https://meps.ahrq.gov/mepsweb/).
 
-The evaluation scripts are under `meps`, `wilds\fmow`, and `wilds\poverty`. Final paper numbers average 100 runs per dataset/scenario using contiguous seed ranges starting from the base seed.
+The evaluation scripts are under `meps`, `wilds/fmow`, and `wilds/poverty`. Reported paper results average 100 runs per dataset using contiguous seed ranges starting from the base seed.
 
 **Prerequisites:**
 
@@ -107,7 +92,7 @@ The evaluation scripts are under `meps`, `wilds\fmow`, and `wilds\poverty`. Fina
 ### MEPS
 
 ```bash
-# Run the evaluator (outputs default to `eval_out/meps/`)
+# Run the evaluator, outputs default to `eval_out/meps/`
 python -m meps.eval --panels 19 20 21 --num-trials 1 --base-seed 45678
 ```
 
@@ -117,13 +102,13 @@ python -m meps.eval --panels 19 20 21 --num-trials 1 --base-seed 45678
 # 1. Create 2014-2016 split
 python wilds/poverty/create_training_split.py --repo-root . --train-frac 0.375 --seed 0 --years 2014 2015 2016
 
-# 2. Train ResNet18 multi-head regressor (default outputs under `eval_out/poverty/training/run_multihead_gaussian/`)
+# 2. Train ResNet18 multi-head regressor
 python wilds/poverty/train_resnet.py --repo-root .
 
-# 3. Predict once: export embeddings and header weights for evaluation
+# 3. Predict on the holdout set
 python wilds/poverty/predict_density.py --repo-root . --checkpoint eval_out/poverty/training/run_multihead_gaussian/best_model.pth
 
-# 4. Split many: learn lambda, calibrate, and evaluate MDCP vs. baselines
+# 4. Learn lambda, calibrate and evaluate
 python wilds/poverty/analysis/eval.py --prediction-dir eval_out/poverty/predictions/run_multihead_gaussian --num-trials 1 --base-seed 90000
 
 # 5. Plot results, including preprocessing required to reproduce the paper’s figures
@@ -193,7 +178,7 @@ python notebook/paper_figures/plot_meps.py --input eval_out/meps --output eval_o
 ```
 
 
-## Codebase Overview
+## Repo layout
 
 ```
 MDCP/
@@ -215,3 +200,22 @@ MDCP/
 ├── data/ (downloaded datasets)
 └── eval_out/ (experiment outputs + figures)
 ```
+
+
+## Citation 
+
+Please use the following bibliography for citing our method and package. 
+
+
+```
+@misc{yang2026multidistributionrobustconformalprediction,
+      title={Multi-Distribution Robust Conformal Prediction}, 
+      author={Yuqi Yang and Ying Jin},
+      year={2026},
+      eprint={2601.02998},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2601.02998}, 
+}
+```
+

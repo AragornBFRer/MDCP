@@ -64,13 +64,6 @@ LINEAR_EVAL_FOLDER_ABS = eval_out_absolute("linear")
 LINEAR_EVAL_LAMBDA_FOLDER = eval_out_relative("linear", "lambda")
 LINEAR_EVAL_LAMBDA_FOLDER_ABS = eval_out_absolute("linear", "lambda")
 
-# Backwards-compatible aliases (older code referred to the linear evaluation as
-# "iterative_eval"). New code should prefer the LINEAR_EVAL_* names.
-ITERATIVE_EVAL_FOLDER = LINEAR_EVAL_FOLDER
-ITERATIVE_EVAL_FOLDER_ABS = LINEAR_EVAL_FOLDER_ABS
-ITERATIVE_EVAL_LAMBDA_FOLDER = LINEAR_EVAL_LAMBDA_FOLDER
-ITERATIVE_EVAL_LAMBDA_FOLDER_ABS = LINEAR_EVAL_LAMBDA_FOLDER_ABS
-
 MDCP_BASELINE_COMP_FIG = "mdcp_vs_baseline_seed{random_seed}_alpha{alpha}_sources{n_sources}_classes{n_classes}_temperature{temperature}"
 BASELINE_BASELINE_COMP_FIG_CLS = "baseline_methods_classification_seed{random_seed}_alpha{alpha}_temperature{temperature}"
 BASELINE_BASELINE_COMP_FIG_REG = "baseline_methods_regression_seed{random_seed}_alpha{alpha}_temperature{temperature}"
