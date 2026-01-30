@@ -18,21 +18,20 @@ This repo serves as the implementation for the paper ["Multi-Distribution Robust
 
 **1. Create & activate an environment**
 
-*   **Windows (PowerShell)**
-    ```powershell
-    python -m venv mdcp
-    .\mdcp\Scripts\Activate.ps1
-    ```
+Windows (PowerShell)
+```powershell
+python -m venv mdcp
+.\mdcp\Scripts\Activate.ps1
+```
 
-*   **macOS/Linux (bash/zsh)**
-    ```bash
-    python -m venv mdcp
-    source mdcp/bin/activate
-    ```
+macOS/Linux (bash/zsh)
+```bash
+python -m venv mdcp
+source mdcp/bin/activate
+```
 
 **2. Install dependencies**
 
-Once the environment is active:
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt wilds
@@ -89,14 +88,14 @@ The evaluation scripts are under `meps`, `wilds/fmow`, and `wilds/poverty`. Repo
 
     Follow [the download guide](https://github.com/yromano/cqr/tree/master/get_meps_data), then drop the three cleaned files into `meps/data/` with names `meps_*_reg.csv`.
 
-### MEPS
+**MEPS**
 
 ```bash
 # Run the evaluator, outputs default to `eval_out/meps/`
 python -m meps.eval --panels 19 20 21 --num-trials 1 --base-seed 45678
 ```
 
-### PovertyMap (WILDS)
+**PovertyMap**
 
 ```bash
 # 1. Create 2014-2016 split
@@ -115,7 +114,7 @@ python wilds/poverty/analysis/eval.py --prediction-dir eval_out/poverty/predicti
 python wilds/poverty/analysis/plot.py
 ```
 
-### FMoW (WILDS)
+**FMoW**
 
 ```bash
 # 1. Create 2016-only splits
